@@ -1,0 +1,137 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col"></div>
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="row justify-content-between">
+            <div class="col-auto">
+              <input type="text" class="form-control" placeholder="Search" (keyup)="searchByEmployeeName($event)" ngModel />
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-primary" (click)="openFormModal()">
+                Add
+              </button>
+            </div>
+          </div>
+          <hr />
+
+          <table class="table table-hover">
+            <thead class="table-primary">
+              <tr>
+                <th scope="col">EId</th>
+                <th scope="col">EName</th>
+                <th scope="col">DOJ</th>
+                <th scope="col">YOE</th>
+                <th scope="col">Designation</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let emp of empList">
+              <tr>
+                <th scope="row">{{ emp.empId }}</th>
+                <td>{{ emp.empName }}</td>
+                <td>{{ emp.Doj }}</td>
+                <td>{{ emp.Yoe }}</td>
+                <td>{{ emp.destination }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="employeeModal" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Employee</h5>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(formValue)" #formValue="ngForm">
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label"
+              >Employee Id</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="number"
+                class="form-control"
+                name="empId"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label"
+              >Employee Name</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                name="empName"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label"
+              >Date of Joining</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="date"
+                class="form-control"
+                name="Doj"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label"
+              >Year of Experience</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="number"
+                class="form-control"
+                name="Yoe"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="colFormLabel" class="col-sm-4 col-form-label"
+              >Designation</label
+            >
+            <div class="col-sm-8">
+              <input
+                type="text"
+                class="form-control"
+                name="destination"
+                ngModel
+              />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancel
+            </button>
+          </div>
+        </form>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
